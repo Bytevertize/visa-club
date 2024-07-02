@@ -1,0 +1,66 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "extends": [
+        "//"
+    ],
+    "pipeline": {
+        "build": {
+            "env": [
+                "GCP_TYPE",
+                "GCP_PROJECT_ID",
+                "GCP_PRIVATE_KEY_ID",
+                "GCP_PRIVATE_KEY",
+                "GCP_EMAIL",
+                "GCP_CLIENT_ID",
+                "MEDIA_URL",
+                "PAYLOAD_SECRET",
+                "PORT",
+                "DATABASE_URI",
+                "PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN",
+                "PAYLOAD_PUBLIC_WEB_ENDPOINT",
+                "PAYLOAD_PUBLIC_OWN_ENDPOINT"
+            ],
+            "outputs": [
+                "dist/**",
+                "build/**"
+            ]
+        },
+        "dev": {
+            "cache": false,
+            "env": [
+                "GCP_TYPE",
+                "GCP_PROJECT_ID",
+                "GCP_PRIVATE_KEY_ID",
+                "GCP_PRIVATE_KEY",
+                "GCP_EMAIL",
+                "GCP_CLIENT_ID",
+                "MEDIA_URL",
+                "PAYLOAD_SECRET",
+                "PORT",
+                "DATABASE_URI",
+                "PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN",
+                "PAYLOAD_PUBLIC_WEB_ENDPOINT",
+                "PAYLOAD_PUBLIC_OWN_ENDPOINT"
+            ],
+            "persistent": true
+        },
+        "generate:types": {
+            "inputs": [
+                "src/**"
+            ],
+            "outputs": [
+                "../../packages/admin-types/types.d.ts"
+            ]
+        },
+        "serve": {
+            "cache": false,
+            "outputs": [
+                "dist/**",
+                "build/**"
+            ]
+        },
+        "start:mongo-db": {
+            "cache": false
+        }
+    }
+}
