@@ -1,0 +1,25 @@
+.textStrikethrough {
+        text-decoration: line-through;
+}
+
+.textUnderline {
+    text-decoration: underline;
+}
+
+.textUnderlineStrikethrough {
+    text-decoration: underline line-through;
+}
+
+.textBold {
+    font-weight: bold;
+}
+
+.textCode {
+    padding: 1px 0.25rem;
+    font-family: Menlo, Consolas, Monaco, monospace;
+    font-size: 94%;
+}
+
+.textItalic {
+    font-style: italic;
+}
