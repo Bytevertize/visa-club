@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "//"
+  ],
+  "globalEnv": [
+    "PAYLOAD_SECRET",
+    "PORT",
+    "DATABASE_URI"
+  ],
+  "pipeline": {
+    "build": {
+      "env": [
+        "PAYLOAD_SECRET",
+        "PORT",
+        "DATABASE_URI"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": [
+        "start:mongo-db"
+      ],
+      "env": [
+        "PAYLOAD_SECRET",
+        "PORT",
+        "DATABASE_URI"
+      ],
+      "persistent": true
+    },
+    "start:mongo-db": {
+      "cache": false
+    }
+  }
+}
