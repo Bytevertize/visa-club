@@ -1,0 +1,14 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@requests/*": ["./src/graphql-client/*"],
+      "@requests": ["./src/graphql-client/index.ts"],
+      "@components/*": ["./src/components/*"],
+      "@components": ["./src/components/index.ts"],
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
