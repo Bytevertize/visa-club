@@ -1,0 +1,29 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "extends": [
+        "//"
+    ],
+    "pipeline": {
+        "build": {
+            "dependsOn": [
+                "@repo/ui#build:styles"
+            ],
+            "env": [
+                "GRAPHQL_ENDPOINT",
+                "ANALYZE",
+                "NEXT_PUBLIC_LANG_COOKIE"
+            ]
+        },
+        "dev": {
+            "cache": false,
+            "dependsOn": [
+                "admin-panel#generate:types"
+            ],
+            "env": [
+                "GRAPHQL_ENDPOINT",
+                "NEXT_PUBLIC_LANG_COOKIE"
+            ],
+            "persistent": true
+        }
+    }
+}
