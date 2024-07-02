@@ -1,0 +1,43 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "extends": [
+        "//"
+    ],
+    "pipeline": {
+        "build": {
+            "env": [
+                "MEDIA_URL",
+                "PAYLOAD_SECRET",
+                "PORT",
+                "DATABASE_URI"
+            ],
+            "outputs": [
+                "dist/**"
+            ]
+        },
+        "dev": {
+            "cache": false,
+            "dependsOn": [
+                "start:mongo-db"
+            ],
+            "env": [
+                "MEDIA_URL",
+                "PAYLOAD_SECRET",
+                "PORT",
+                "DATABASE_URI"
+            ],
+            "persistent": true
+        },
+        "generate:types": {
+            "inputs": [
+                "src/**"
+            ],
+            "outputs": [
+                "../../packages/admin-types/types.d.ts"
+            ]
+        },
+        "start:mongo-db": {
+            "cache": false
+        }
+    }
+}

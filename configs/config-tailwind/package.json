@@ -1,0 +1,13 @@
+{
+    "devDependencies": {
+        "@repo/typescript-config": "*",
+        "daisyui": "^4.6.1",
+        "tailwindcss": "^3.4.0"
+    },
+    "exports": {
+        ".": "./tailwind.config.ts"
+    },
+    "name": "@repo/tailwind-config",
+    "private": true,
+    "version": "0.0.0"
+}
