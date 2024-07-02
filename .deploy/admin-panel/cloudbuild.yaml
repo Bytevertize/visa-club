@@ -1,0 +1,87 @@
+steps:
+    - name: gcr.io/cloud-builders/docker
+      args:
+          - build
+          - '-t'
+          - 'gcr.io/bytevertize/github.com/bytevertize/base:$COMMIT_SHA'
+          - '-f'
+          - .deploy/admin-panel/Dockerfile
+          - .
+          - '--build-arg'
+          - DATABASE_URI=$$DATABASE_URI
+          - '--build-arg'
+          - MEDIA_URL=${_MEDIA_URL}
+          - '--build-arg'
+          - PAYLOAD_SECRET=$$PAYLOAD_SECRET
+          - '--build-arg'
+          - PORT=$$PORT
+          - '--build-arg'
+          - PAYLOAD_PUBLIC_WEB_ENDPOINT=${_PAYLOAD_PUBLIC_WEB_ENDPOINT}
+          - '--build-arg'
+          - PAYLOAD_PUBLIC_OWN_ENDPOINT=${_PAYLOAD_PUBLIC_OWN_ENDPOINT}
+          - '--build-arg'
+          - PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN=${_PAYLOAD_DRAFT_TOKEN}
+          - '--build-arg'
+          - 'PAYLOAD_PUBLIC_BUCKET_ACCESS=$$PAYLOAD_PUBLIC_BUCKET_ACCESS'
+      id: Build
+      secretEnv:
+          - DATABASE_URI
+          # - MEDIA_URL
+          - PAYLOAD_SECRET
+          - PORT
+          # - PAYLOAD_PUBLIC_WEB_ENDPOINT
+          # - PAYLOAD_PUBLIC_OWN_ENDPOINT
+          # - PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN
+          - PAYLOAD_PUBLIC_BUCKET_ACCESS
+    - name: gcr.io/cloud-builders/docker
+      args:
+          - push
+          - 'gcr.io/bytevertize/github.com/bytevertize/base:$COMMIT_SHA'
+      id: Push
+    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+      args:
+          - run
+          - services
+          - update
+          - $_SERVICE_NAME
+          - '--platform=managed'
+          - '--image=gcr.io/bytevertize/github.com/bytevertize/base:$COMMIT_SHA'
+          - >-
+              --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
+          - '--region=$_DEPLOY_REGION'
+          - '--quiet'
+      id: Deploy
+      entrypoint: gcloud
+images:
+    - 'gcr.io/bytevertize/github.com/bytevertize/base:$COMMIT_SHA'
+options:
+    substitutionOption: ALLOW_LOOSE
+    automapSubstitutions: true
+substitutions:
+    _DEPLOY_REGION: europe-west1
+    _AR_HOSTNAME: europe-west1-docker.pkg.dev
+    _SERVICE_NAME: admin-panel-test
+    _PLATFORM: managed
+    _MEDIA_URL: DEFAULT
+    _PAYLOAD_PUBLIC_WEB_ENDPOINT: DEFAULT
+    _PAYLOAD_PUBLIC_OWN_ENDPOINT: DEFAULT
+    _PAYLOAD_DRAFT_TOKEN: DEFAULT
+availableSecrets:
+    secretManager:
+        - versionName: projects/bytevertize/secrets/ADMIN_PANEL_DB_URI/versions/latest
+          env: DATABASE_URI
+        # - versionName: projects/bytevertize/secrets/MEDIA_URL/versions/latest
+        #   env: MEDIA_URL
+        - versionName: projects/bytevertize/secrets/PAYLOAD_SECRET/versions/latest
+          env: PAYLOAD_SECRET
+        - versionName: projects/bytevertize/secrets/PORT/versions/latest
+          env: PORT
+        # - versionName: projects/bytevertize/secrets/PAYLOAD_PUBLIC_WEB_ENDPOINT/versions/latest
+        #   env: PAYLOAD_PUBLIC_WEB_ENDPOINT
+        # - versionName: projects/bytevertize/secrets/PAYLOAD_PUBLIC_OWN_ENDPOINT/versions/latest
+        #   env: PAYLOAD_PUBLIC_OWN_ENDPOINT
+        # - versionName: >-
+        #       projects/bytevertize/secrets/PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN/versions/latest
+        #   env: PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN
+        - versionName: projects/bytevertize/secrets/PAYLOAD_PUBLIC_BUCKET_ACCESS/versions/latest
+          env: PAYLOAD_PUBLIC_BUCKET_ACCESS

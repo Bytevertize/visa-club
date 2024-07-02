@@ -1,0 +1,62 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "extends": [
+        "//"
+    ],
+    "tasks": {
+        "build": {
+            "dependsOn": [
+                "@repo/ui#build:styles"
+            ],
+            "env": [
+                "PAYLOAD_HOSTNAME",
+                "GRAPHQL_ENDPOINT",
+                "ANALYZE",
+                "NEXT_PUBLIC_LANG_COOKIE",
+                "PAYLOAD_DRAFT_TOKEN",
+                "NEXT_PUBLIC_PAYLOAD_ENDPOINT"
+            ]
+        },
+        "dev": {
+            "cache": false,
+            "dependsOn": [
+                "admin-panel#generate:types"
+            ],
+            "env": [
+                "PAYLOAD_HOSTNAME",
+                "GRAPHQL_ENDPOINT",
+                "NEXT_PUBLIC_LANG_COOKIE",
+                "PAYLOAD_DRAFT_TOKEN",
+                "NEXT_PUBLIC_PAYLOAD_ENDPOINT"
+            ],
+            "persistent": true
+        },
+        "start": {
+            "cache": false,
+            "dependsOn": [
+                "build"
+            ],
+            "env": [
+                "GRAPHQL_ENDPOINT",
+                "NEXT_PUBLIC_LANG_COOKIE",
+                "PAYLOAD_DRAFT_TOKEN",
+                "NEXT_PUBLIC_PAYLOAD_ENDPOINT",
+                "PAYLOAD_HOSTNAME"
+            ],
+            "persistent": true
+        },
+        "start:static": {
+            "cache": false,
+            "dependsOn": [
+                "build"
+            ],
+            "env": [
+                "GRAPHQL_ENDPOINT",
+                "NEXT_PUBLIC_LANG_COOKIE",
+                "NEXT_PUBLIC_PAYLOAD_ENDPOINT",
+                "PAYLOAD_HOSTNAME"
+            ],
+            "persistent": true
+        }
+    }
+}
