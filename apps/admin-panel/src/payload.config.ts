@@ -53,6 +53,7 @@ function createGcsAdapter() {
 dotenv.config()
 /* eslint-disable-import/prefer-default-export */
 export default buildConfig({
+
     cors: [process.env.PAYLOAD_PUBLIC_WEB_ENDPOINT],
     csrf: [
         process.env.PAYLOAD_PUBLIC_WEB_ENDPOINT,
@@ -150,6 +151,7 @@ export default buildConfig({
     },
     plugins: [
         cloudStorage({
+            enabled: Boolean(process.env.PAYLOAD_PUBLIC_BUCKET_ACCESS),
             collections: {
                 logo: {
                     adapter: createGcsAdapter(),

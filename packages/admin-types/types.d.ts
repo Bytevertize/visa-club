@@ -108,6 +108,8 @@ export interface PageBackground {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
   sizes?: {
     desktop?: {
       url?: string | null;
@@ -150,6 +152,8 @@ export interface PageSectionBackground {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -166,6 +170,8 @@ export interface Seo {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
   sizes?: {
     facebook?: {
       url?: string | null;
@@ -211,6 +217,8 @@ export interface PageImage {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
   sizes?: {
     wide?: {
       url?: string | null;
@@ -245,6 +253,8 @@ export interface Logo {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -3,7 +3,7 @@
     "extends": [
         "//"
     ],
-    "pipeline": {
+    "tasks": {
         "build": {
             "env": [
                 "PAYLOAD_PUBLIC_BUCKET_ACCESS",
