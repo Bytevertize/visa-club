@@ -25,7 +25,7 @@ export function DesktopHeader({ data, locale, slug }: HeaderProps) {
             </div>
             <div className="navbar-center">
                 <ul className="menu menu-horizontal px-1">
-                    <Links data={data} locale={locale} />
+                    <Links data={data.navItems.items} locale={locale} />
                 </ul>
             </div>
             <div className="navbar-end">
