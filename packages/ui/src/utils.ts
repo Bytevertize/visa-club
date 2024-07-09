@@ -45,7 +45,6 @@ function calcResponsiveBooleanClass({
     if (typeof prop === 'boolean') {
         return prop ? options.base : ''
     }
-    console.log({ prop, options })
     return calcResponsiveClass<boolean>({ prop, options })
 }
 

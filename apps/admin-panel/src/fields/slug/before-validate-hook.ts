@@ -10,14 +10,18 @@ export const formatSlug =
     (fallback: string): FieldHook =>
     ({ operation, value, originalDoc, data }) => {
         if (typeof value === 'string') {
-            return format(value)
+            return value.trim() ? format(value) : 'index'
         }
 
         if (operation === 'create') {
             const fallbackData = data?.[fallback] || originalDoc?.[fallback]
 
             if (fallbackData && typeof fallbackData === 'string') {
-                return format(fallbackData)
+                const formatted = format(fallbackData)
+
+                return !formatted || formatted.includes('home')
+                    ? 'index'
+                    : formatted
             }
         }
 

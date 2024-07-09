@@ -32,9 +32,8 @@ PayloadFieldProps) {
 
     useEffect(() => {
         async function setColorAndPresets() {
-            const colorPreferences = await getPreference<string[]>(
-                preferenceKey,
-            )
+            const colorPreferences =
+                await getPreference<string[]>(preferenceKey)
 
             if (colorPreferences) {
                 setPresets(colorPreferences)

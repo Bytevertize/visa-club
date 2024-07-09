@@ -13,8 +13,13 @@ export const SlugField = (
             label: 'Slug',
             type: 'text',
             index: true,
-            admin: {
-                position: 'sidebar',
+            validate(value) {
+                const slugRegex = /^[a-z0-9-]+$/
+                if (!slugRegex.test(value)) {
+                    return 'Only lowercase letters, numbers, and dashes are allowed'
+                }
+
+                return true
             },
             hooks: {
                 beforeValidate: [formatSlug(fieldToUse)],

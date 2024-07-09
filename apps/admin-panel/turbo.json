@@ -1,37 +1,56 @@
 {
-  "extends": [
-    "//"
-  ],
-  "globalEnv": [
-    "PAYLOAD_SECRET",
-    "PORT",
-    "DATABASE_URI"
-  ],
-  "pipeline": {
-    "build": {
-      "env": [
-        "PAYLOAD_SECRET",
-        "PORT",
-        "DATABASE_URI"
-      ],
-      "outputs": [
-        "dist/**"
-      ]
-    },
-    "dev": {
-      "cache": false,
-      "dependsOn": [
-        "start:mongo-db"
-      ],
-      "env": [
-        "PAYLOAD_SECRET",
-        "PORT",
-        "DATABASE_URI"
-      ],
-      "persistent": true
-    },
-    "start:mongo-db": {
-      "cache": false
+    "$schema": "https://turbo.build/schema.json",
+    "extends": [
+        "//"
+    ],
+    "tasks": {
+        "build": {
+            "env": [
+                "PAYLOAD_PUBLIC_BUCKET_ACCESS",
+                "MEDIA_URL",
+                "PAYLOAD_SECRET",
+                "PORT",
+                "DATABASE_URI",
+                "PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN",
+                "PAYLOAD_PUBLIC_WEB_ENDPOINT",
+                "PAYLOAD_PUBLIC_OWN_ENDPOINT"
+            ],
+            "outputs": [
+                "dist/**",
+                "build/**"
+            ]
+        },
+        "dev": {
+            "cache": false,
+            "env": [
+                "PAYLOAD_PUBLIC_BUCKET_ACCESS",
+                "MEDIA_URL",
+                "PAYLOAD_SECRET",
+                "PORT",
+                "DATABASE_URI",
+                "PAYLOAD_PUBLIC_WEB_DRAFT_TOKEN",
+                "PAYLOAD_PUBLIC_WEB_ENDPOINT",
+                "PAYLOAD_PUBLIC_OWN_ENDPOINT"
+            ],
+            "persistent": true
+        },
+        "generate:types": {
+            "inputs": [
+                "src/**"
+            ],
+            "outputs": [
+                "../../packages/admin-types/types.d.ts"
+            ]
+        },
+        "serve": {
+            "cache": false,
+            "outputs": [
+                "dist/**",
+                "build/**"
+            ]
+        },
+        "start:mongo-db": {
+            "cache": false
+        }
     }
-  }
 }

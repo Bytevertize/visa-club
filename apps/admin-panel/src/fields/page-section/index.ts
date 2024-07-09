@@ -3,7 +3,6 @@ import { AnimationField } from './animation'
 import { BackgroundSelect } from '../background-select'
 
 export const PageSection: Field = {
-    // name: 'pageSection',
     type: 'tabs',
     tabs: [
         {
@@ -13,6 +12,7 @@ export const PageSection: Field = {
                     name: 'richText',
                     label: false,
                     type: 'richText',
+                    localized: true,
                 },
             ],
         },
@@ -22,6 +22,7 @@ export const PageSection: Field = {
                 {
                     label: 'Animation Settings',
                     type: 'collapsible',
+                    localized: true,
                     fields: [
                         AnimationField('onEnter'),
                         AnimationField('onLeave'),
@@ -31,7 +32,7 @@ export const PageSection: Field = {
         },
         {
             name: 'background',
-            fields: [BackgroundSelect],
+            fields: [BackgroundSelect('page-section-background')],
         },
     ],
 }

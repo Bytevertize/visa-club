@@ -1,8 +1,9 @@
 {
   "private": true,
+  "name": "visa-club",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev --filter=admin-panel --filter=web",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
@@ -29,5 +30,9 @@
     "packages/*",
     "configs/*",
     "plugins/*"
-  ]
+  ],
+  "resolutions": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
 }
