@@ -1,16 +1,14 @@
 import type { Page } from 'admin-types'
 import Link from 'next/link'
-import type { HeaderProps } from './types'
-
-export function Links({
-    data,
-    locale,
-    isMobile,
-}: Omit<HeaderProps, 'slug'> & { isMobile?: boolean }) {
-    return data.navItems.items.map((item) => {
-        const page = item.link.reference?.value as Page
-        const link =
-            page.slug === 'index' ? `/${locale}` : `/${locale}/${page.slug}`
+import { Locale } from '@i18n/types'
+import type { Header } from 'admin-types'
+type Props = {
+    locale: Locale
+    isMobile?: boolean
+    data: Header['navItems']['items']
+}
+export function Links({ data, locale, isMobile }: Props) {
+    return data.map((item) => {
         return (
             <li
                 className={`p-0  ${
@@ -22,13 +20,36 @@ export function Links({
             >
                 <Link
                     className="no-underline"
-                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- TODO: Fix during refactoring
-                    href={page.slug ? link : item.link.url!}
-                    target={item.link.newTab ? '_blank' : ''}
+                    href={getUrl(item, locale)}
+                    target={getTarget(item)}
                 >
                     {item.link.label}
                 </Link>
             </li>
         )
     })
+}
+
+function getTarget(item: Header['navItems']['items'][0]) {
+    return item.link.newTab ? '_blank' : ''
+}
+function getUrl(item: Header['navItems']['items'][0], locale: Locale) {
+    switch (item.link.type) {
+        case 'reference':
+            const slug = (item.link.reference?.value as Page)?.slug
+
+            if (!slug) {
+                throw new Error('Slug missing for provided page')
+            }
+
+            return slug === 'index' ? `/${locale}` : `/${locale}/${slug}`
+        case 'custom':
+            if (!item.link.url) {
+                throw new Error('URL missing for provided external page')
+            }
+
+            return item.link.url
+        default:
+            throw new Error('Invalid Link Type provided to Header')
+    }
 }

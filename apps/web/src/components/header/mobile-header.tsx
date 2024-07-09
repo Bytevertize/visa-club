@@ -72,7 +72,11 @@ export function MobileHeader({ data, locale }: Omit<HeaderProps, 'slug'>) {
                     </div>
                     <div className="w-full py-4 px-6 text-center text-lg">
                         <ul className="flex flex-col items-center list-none pl-0">
-                            <Links data={data} isMobile locale={locale} />
+                            <Links
+                                data={data.navItems.items}
+                                isMobile
+                                locale={locale}
+                            />
                             {data.i18n.text ? (
                                 <ChangeLang>{data.i18n.text}</ChangeLang>
                             ) : null}

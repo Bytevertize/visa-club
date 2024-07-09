@@ -15,9 +15,7 @@ export function DesktopHeader({ data, locale, slug }: HeaderProps) {
                             alt="logo"
                             className="m-2 h-12 w-1h-12"
                             height={(data.logo.image as Logo).height || 0}
-                            src={`${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}${
-                                (data.logo.image as Logo).url
-                            }`}
+                            src={`${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}${(data.logo.image as Logo).url}`}
                             width={(data.logo.image as Logo).width || 0}
                         />
                     </Link>
@@ -25,7 +23,7 @@ export function DesktopHeader({ data, locale, slug }: HeaderProps) {
             </div>
             <div className="navbar-center">
                 <ul className="menu menu-horizontal px-1">
-                    <Links data={data} locale={locale} />
+                    <Links data={data.navItems.items} locale={locale} />
                 </ul>
             </div>
             <div className="navbar-end">

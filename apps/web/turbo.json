@@ -20,7 +20,8 @@
         "dev": {
             "cache": false,
             "dependsOn": [
-                "admin-panel#generate:types"
+                "admin-panel#generate:types",
+                "^build"
             ],
             "env": [
                 "PAYLOAD_HOSTNAME",
