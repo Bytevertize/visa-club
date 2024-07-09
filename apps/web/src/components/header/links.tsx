@@ -7,11 +7,7 @@ type Props = {
     isMobile?: boolean
     data: Header['navItems']['items']
 }
-export function Links({
-    data,
-    locale,
-    isMobile,
-}: Props) {
+export function Links({ data, locale, isMobile }: Props) {
     return data.map((item) => {
         return (
             <li
@@ -34,26 +30,26 @@ export function Links({
     })
 }
 
-function getTarget(item: Header['navItems']['items'][0]){
+function getTarget(item: Header['navItems']['items'][0]) {
     return item.link.newTab ? '_blank' : ''
 }
-function getUrl(item: Header['navItems']['items'][0], locale: Locale){
-    switch(item.link.type) {
+function getUrl(item: Header['navItems']['items'][0], locale: Locale) {
+    switch (item.link.type) {
         case 'reference':
             const slug = (item.link.reference?.value as Page)?.slug
 
-            if(!slug) {
-                throw new Error("Slug missing for provided page")
+            if (!slug) {
+                throw new Error('Slug missing for provided page')
             }
 
             return slug === 'index' ? `/${locale}` : `/${locale}/${slug}`
         case 'custom':
-
-        if(!item.link.url) {
-            throw new Error("URL missing for provided external page")
-        }
+            if (!item.link.url) {
+                throw new Error('URL missing for provided external page')
+            }
 
             return item.link.url
-        default: throw new Error("Invalid Link Type provided to Header")
+        default:
+            throw new Error('Invalid Link Type provided to Header')
     }
 }
