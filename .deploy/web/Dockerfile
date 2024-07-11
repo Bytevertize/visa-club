@@ -25,18 +25,6 @@ RUN yarn install --network-timeout 100000
 
 COPY --from=builder /app/out/full/ .
 
-ARG GRAPHQL_ENDPOINT
-ARG NEXT_PUBLIC_PAYLOAD_ENDPOINT
-ARG NEXT_PUBLIC_LANG_COOKIE
-ARG PAYLOAD_DRAFT_TOKEN
-ARG PAYLOAD_HOSTNAME
-
-ENV PAYLOAD_HOSTNAME=${PAYLOAD_HOSTNAME}
-ENV GRAPHQL_ENDPOINT=${GRAPHQL_ENDPOINT}
-ENV NEXT_PUBLIC_PAYLOAD_ENDPOINT=${NEXT_PUBLIC_PAYLOAD_ENDPOINT}
-ENV NEXT_PUBLIC_LANG_COOKIE=${NEXT_PUBLIC_LANG_COOKIE}
-ENV PAYLOAD_DRAFT_TOKEN=${PAYLOAD_DRAFT_TOKEN}
-
 # The --filter=web... argument specifies the target filter to build
 # This is useful when the monorepo contains multiple targets
 # and we only want to build the web target
@@ -59,16 +47,5 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 # COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
 
-ARG GRAPHQL_ENDPOINT
-ARG NEXT_PUBLIC_PAYLOAD_ENDPOINT
-ARG NEXT_PUBLIC_LANG_COOKIE
-ARG PAYLOAD_DRAFT_TOKEN
-ARG PAYLOAD_HOSTNAME
-
-ENV PAYLOAD_HOSTNAME=${PAYLOAD_HOSTNAME}
-ENV GRAPHQL_ENDPOINT=${GRAPHQL_ENDPOINT}
-ENV NEXT_PUBLIC_PAYLOAD_ENDPOINT=${NEXT_PUBLIC_PAYLOAD_ENDPOINT}
-ENV NEXT_PUBLIC_LANG_COOKIE=${NEXT_PUBLIC_LANG_COOKIE}
-ENV PAYLOAD_DRAFT_TOKEN=${PAYLOAD_DRAFT_TOKEN}
 
 CMD node apps/web/server.js

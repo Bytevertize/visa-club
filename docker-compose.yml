@@ -1,46 +1,43 @@
 services:
-    # web:
-    #     container_name: web
-    #     build:
-    #         context: .
-    #         dockerfile: ./apps/web/Dockerfile
-    #     restart: always
-    #     ports:
-    #         - '3000:3000'
-    #     networks:
-    #         - app_network
-    #     depends_on:
-    #         - admin_panel
-    #     env_file:
-    #         - ./apps/web/.env.production
-
-    # admin_panel:
-    #     container_name: admin_panel
-    #     build:
-    #         context: .
-    #         dockerfile: ./apps/admin-panel/Dockerfile
-    #     restart: always
-    #     ports:
-    #         - '4000:4000'
-    #     networks:
-    #         - app_network
-    #     depends_on:
-    #         - mongo
-    #     env_file:
-    #         - ./apps/admin-panel/.env
-
-    mongo:
-        image: mongo:6-jammy
-        ports:
-            - '27017:27017'
-        volumes:
-            - database:/data/db
+    web:
         networks:
             - app_network
+        container_name: web
+        build:
+            network: host
+            context: .
+            dockerfile: ./.deploy/web/Dockerfile
+        restart: always
+        ports:
+            - 3000:3000
+        depends_on:
+            - admin_panel
+
+    admin_panel:
+        networks:
+            - app_network
+        container_name: admin_panel
+        build:
+            context: .
+            network: host
+            dockerfile: ./.deploy/admin-panel/Dockerfile
+        restart: always
+        ports:
+            - 4000:4000
+        depends_on:
+            - mongo
+
+    mongo:
+        networks:
+            - app_network
+        image: mongo:6-jammy
+        ports:
+            - 27017:27017
+        volumes:
+            - database:/data/db
 
 volumes:
     database:
-
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:

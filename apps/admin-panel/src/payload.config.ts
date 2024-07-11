@@ -27,6 +27,8 @@ import { FormBlock } from './blocks'
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
 import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs'
 import { Buffer } from 'buffer'
+dotenv.config({path: ".env"});
+dotenv.config({path: ".env.production"});
 
 function createGcsAdapter() {
     const credentials = (() => {
@@ -50,7 +52,7 @@ function createGcsAdapter() {
     })
 }
 
-dotenv.config()
+
 /* eslint-disable-import/prefer-default-export */
 export default buildConfig({
     cors: [process.env.PAYLOAD_PUBLIC_WEB_ENDPOINT],
