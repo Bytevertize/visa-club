@@ -1,1 +1,6 @@
 node_modules
+apps/**/.env
+apps/**/.env.local
+apps/**/.env.example
+apps/**/.env.production.local
+apps/**/.env.development.local
