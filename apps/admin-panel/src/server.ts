@@ -1,9 +1,9 @@
 import express from 'express'
 import payload from 'payload'
 
-const dotenv = require('dotenv');
-dotenv.config({path: ".env"});
-dotenv.config({path: ".env.production"});
+const dotenv = require('dotenv')
+dotenv.config({ path: '.env' })
+dotenv.config({ path: '.env.production' })
 const app = express()
 
 // Redirect root to Admin panel
