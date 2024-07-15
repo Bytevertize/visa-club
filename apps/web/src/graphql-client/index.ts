@@ -1,2 +1,3 @@
-export * from './collections'
-export * from './globals'
+export * from './footer'
+export * from './header'
+export * from './page'

@@ -2,8 +2,7 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import type { Locale } from '@i18n/types'
 import { PageTemplate } from '@components'
-import { getPages } from '@requests/collections'
-import { getFooter, getHeader } from '@requests/globals'
+import { getFooter, getHeader, getMultiplePages } from '@requests'
 
 type PageProps = {
     params: { locale: Locale; slug: string }
@@ -30,7 +29,7 @@ export default async function Page({
             Pages: {
                 docs: [pageData],
             },
-        } = await getPages({
+        } = await getMultiplePages({
             limit: 1,
             draft: isPageBeingEdited,
             locale,

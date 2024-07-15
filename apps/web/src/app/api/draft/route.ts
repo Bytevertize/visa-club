@@ -2,7 +2,7 @@
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
 import type { Locale } from '@i18n/types'
-import { getFooter, getHeader, getPages } from '@requests'
+import { getFooter, getHeader, getMultiplePages } from '@requests'
 
 export async function GET(request: Request) {
     // Parse query string parameters
@@ -33,7 +33,7 @@ export async function GET(request: Request) {
             Pages: {
                 docs: [pageData],
             },
-        } = await getPages({
+        } = await getMultiplePages({
             limit: 1,
             draft: true,
             locale,

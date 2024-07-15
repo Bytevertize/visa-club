@@ -1,7 +1,6 @@
 import type { ResolvingMetadata, Metadata } from 'next'
 import { PageTemplate } from '@components'
-import { getPages } from '@requests/collections'
-import { getFooter, getHeader } from '@requests/globals'
+import { getFooter, getHeader, getMultiplePages } from '@requests'
 
 type PageProps = {
     params: {
@@ -17,7 +16,7 @@ export async function generateMetadata(
         Pages: {
             docs: [pageData],
         },
-    } = await getPages({
+    } = await getMultiplePages({
         limit: 1,
         locale,
         draft: false,
@@ -37,7 +36,7 @@ export default async function Page({ params: { locale } }: PageProps) {
         Pages: {
             docs: [pageData],
         },
-    } = await getPages({
+    } = await getMultiplePages({
         limit: 1,
         locale,
         draft: false,
