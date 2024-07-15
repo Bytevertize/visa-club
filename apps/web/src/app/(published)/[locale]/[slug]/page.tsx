@@ -1,6 +1,6 @@
 import type { ResolvingMetadata, Metadata } from 'next'
 import { PageTemplate } from '@components'
-import { getFooter, getHeader, getPages } from '@requests'
+import { getFooter, getHeader, getMultiplePages } from '@requests'
 
 type PageProps = {
     params: {
@@ -11,15 +11,14 @@ type PageProps = {
 
 export const dynamicParams = false
 
-export async function generateMetadata(
-    { params: { locale, slug } }: PageProps,
-    _parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({
+    params: { locale, slug },
+}: PageProps): Promise<Metadata> {
     const {
         Pages: {
             docs: [pageData],
         },
-    } = await getPages({
+    } = await getMultiplePages({
         limit: 1,
         locale,
         draft: false,
@@ -41,7 +40,7 @@ export default async function Page({
         Pages: {
             docs: [pageData],
         },
-    } = await getPages({
+    } = await getMultiplePages({
         limit: 1,
         draft: false,
         locale,
@@ -67,7 +66,7 @@ export async function generateStaticParams(args: {
 }) {
     const {
         Pages: { docs },
-    } = await getPages({
+    } = await getMultiplePages({
         limit: 0,
         draft: false,
         locale: args.params.locale,
