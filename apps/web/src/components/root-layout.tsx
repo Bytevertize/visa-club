@@ -18,6 +18,4 @@ export function RootLayout({ locale = 'en', children, font }: Props) {
             </body>
         </html>
     )
-
-    //
 }
