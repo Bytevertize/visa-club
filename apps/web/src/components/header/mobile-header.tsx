@@ -58,7 +58,7 @@ export function MobileHeader({ data, locale }: Omit<HeaderProps, 'slug'>) {
                     ref={topDrawerRef}
                 >
                     <div className="flex items-center py-4 px-6">
-                        {data.logo.image ? (
+                        {(data.logo.image as Logo).url ? (
                             <Image
                                 alt="logo"
                                 className="mb-2"
