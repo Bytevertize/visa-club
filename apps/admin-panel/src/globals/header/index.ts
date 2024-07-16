@@ -28,7 +28,6 @@ export const HeaderGlobal: GlobalConfig = {
                         {
                             name: 'items',
                             type: 'array',
-                            required: true,
                             localized: true,
                             fields: [
                                 link({
