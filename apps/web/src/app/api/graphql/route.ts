@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json()
 
-        const gqlResponse = await fetch(process.env.GRAPHQL_ENDPOINT!, {
+        const gqlResponse = await fetch(process.env.GRAPHQL_ENDPOINT || '', {
             method: 'POST',
             credentials: 'include',
             headers: {

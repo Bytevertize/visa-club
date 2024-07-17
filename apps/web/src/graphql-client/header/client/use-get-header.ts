@@ -1,7 +1,7 @@
+import type { Header } from 'admin-types'
 import useGQLClient from '@requests/base-client'
-import { Header } from 'admin-types'
 import { HEADER_QUERY } from '../queries/header-query'
-import { HeaderParams } from '../types'
+import type { HeaderParams } from '../types'
 
 type Props = {
     variables: HeaderParams

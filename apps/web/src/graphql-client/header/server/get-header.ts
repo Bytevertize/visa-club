@@ -1,7 +1,7 @@
 import type { Header } from 'admin-types'
-import { HEADER_QUERY } from '../queries/header-query'
-import { HeaderParams } from '../types'
 import { getServeverGQLClient } from '@requests/base-server'
+import { HEADER_QUERY } from '../queries/header-query'
+import type { HeaderParams } from '../types'
 
 export async function getHeader(
     variables: HeaderParams,

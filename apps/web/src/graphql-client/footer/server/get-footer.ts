@@ -1,7 +1,7 @@
 import type { Footer } from 'admin-types'
-import { FOOTER_QUERY } from '../queries/footer-query'
-import { FooterParams } from '../types'
 import { getServeverGQLClient } from '@requests/base-server'
+import { FOOTER_QUERY } from '../queries/footer-query'
+import type { FooterParams } from '../types'
 
 export async function getFooter(
     variables: FooterParams,

@@ -1,7 +1,7 @@
-import { Page } from 'admin-types'
-import { PageArguments } from '../types'
-import { PAGE_QUERY } from '../queries/page-query'
+import type { Page } from 'admin-types'
 import { getServeverGQLClient } from '@requests/base-server'
+import type { PageArguments } from '../types'
+import { PAGE_QUERY } from '../queries/page-query'
 
 export async function getPage(
     variables: PageArguments,
