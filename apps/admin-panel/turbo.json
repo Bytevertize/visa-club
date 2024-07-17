@@ -6,6 +6,7 @@
     "tasks": {
         "build": {
             "env": [
+                "NODE_ENV",
                 "PAYLOAD_PUBLIC_BUCKET_ACCESS",
                 "MEDIA_URL",
                 "PAYLOAD_SECRET",
