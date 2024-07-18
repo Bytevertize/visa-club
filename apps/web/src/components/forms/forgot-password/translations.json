@@ -1,0 +1,12 @@
+{
+    "bg": {
+        "email": "Имейл",
+        "submit": "Изпрати",
+        "backToLogin": "Обратно към Вход"
+    },
+    "en": {
+        "email": "Email",
+        "submit": "Submit",
+        "backToLogin": "Back to Login"
+    }
+}
