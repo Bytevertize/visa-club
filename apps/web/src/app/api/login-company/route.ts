@@ -1,7 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function POST(request: NextRequest) {
-    const body = await request.json()
+    const formData = await request.formData()
+    const password = formData.get('passwordLoginField')
+    const email = formData.get('emailLoginField')
 
     const cmsResponse = await fetch(
         `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/company/login`,
@@ -11,15 +13,16 @@ export async function POST(request: NextRequest) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                email: body.email,
-                password: body.password,
+                email,
+                password,
             }),
         },
     )
 
-    const nextResponse = NextResponse.redirect('/', {
+    const nextResponse = NextResponse.redirect(new URL('/', request.url), {
         status: 302,
     })
+
     nextResponse.headers.set(
         'Set-Cookie',
         cmsResponse.headers.get('Set-Cookie') || '',

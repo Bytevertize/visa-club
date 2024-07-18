@@ -3,7 +3,6 @@
 import { useCurrentLocale } from 'next-i18n-router/client'
 import { i18nConfig } from '@i18n/config'
 import translation from './translations.json'
-import { logoutAction } from './actions'
 
 export function LogoutForm() {
     const locale = useCurrentLocale(i18nConfig)
@@ -12,7 +11,7 @@ export function LogoutForm() {
         : 'Submit'
 
     return (
-        <form action={void logoutAction}>
+        <form action="/api/logout-company" method="POST">
             <button type="submit">{submitText}</button>
         </form>
     )

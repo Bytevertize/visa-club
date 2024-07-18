@@ -10,7 +10,7 @@ export async function getPage(
 
     return client.request<{ Page: Page }>(PAGE_QUERY, variables, {
         'x-draft-token': variables.draft
-            ? process.env.PAYLOAD_DRAFT_TOKEN!
+            ? process.env.PAYLOAD_DRAFT_TOKEN || ''
             : '',
     })
 }

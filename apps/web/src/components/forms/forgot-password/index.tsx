@@ -1,8 +1,8 @@
+'use client'
 import { useCurrentLocale } from 'next-i18n-router/client'
 import Link from 'next/link'
 import { i18nConfig } from '@i18n/config'
 import translation from './translations.json'
-import { forgotPasswordAction } from './action'
 
 export function ForgotPassword() {
     const locale = useCurrentLocale(i18nConfig)
@@ -19,7 +19,7 @@ export function ForgotPassword() {
         : 'Back to Login'
 
     return (
-        <form action={void forgotPasswordAction}>
+        <form action="api/forgot-password-company" method="POST">
             <input
                 id="forgotPasswordEmailInput"
                 name="forgotPasswordEmailInput"

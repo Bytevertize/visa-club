@@ -14,7 +14,7 @@ export async function getMultiplePages(
         variables,
         {
             'x-draft-token': variables.draft
-                ? process.env.PAYLOAD_DRAFT_TOKEN!
+                ? process.env.PAYLOAD_DRAFT_TOKEN || ''
                 : '',
         },
     )

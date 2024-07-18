@@ -4,7 +4,6 @@ import { useCurrentLocale } from 'next-i18n-router/client'
 import Link from 'next/link'
 import { i18nConfig } from '@i18n/config'
 import translation from './translations.json'
-import { loginAction } from './action'
 
 export function LoginForm() {
     const locale = useCurrentLocale(i18nConfig)
@@ -25,7 +24,7 @@ export function LoginForm() {
         : 'Submit'
 
     return (
-        <form action={void loginAction}>
+        <form action="/api/login-company" method="POST">
             <input
                 id="emailLoginField"
                 name="emailLoginField"
