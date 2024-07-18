@@ -1,6 +1,6 @@
+import type { Footer } from 'admin-types'
 import useGQLClient from '@requests/base-client'
-import { Footer } from 'admin-types'
-import { FooterParams } from '../types'
+import type { FooterParams } from '../types'
 import { FOOTER_QUERY } from '../queries/footer-query'
 
 type Props = {

@@ -1,14 +1,14 @@
-import type { Page } from 'admin-types'
+import type { Page, Header } from 'admin-types'
 import Link from 'next/link'
-import { Locale } from '@i18n/types'
-import type { Header } from 'admin-types'
+import type { Locale } from '@i18n/types'
+
 type Props = {
     locale: Locale
     isMobile?: boolean
     data: Header['navItems']['items']
 }
 export function Links({ data, locale, isMobile }: Props) {
-    return data.map((item) => {
+    return (data || []).map((item) => {
         return (
             <li
                 className={`p-0  ${
@@ -30,19 +30,19 @@ export function Links({ data, locale, isMobile }: Props) {
     })
 }
 
-function getTarget(item: Header['navItems']['items'][0]) {
+function getTarget(item: any) {
     return item.link.newTab ? '_blank' : ''
 }
-function getUrl(item: Header['navItems']['items'][0], locale: Locale) {
+function getUrl(item: any, locale: Locale) {
     switch (item.link.type) {
         case 'reference':
-            const slug = (item.link.reference?.value as Page)?.slug
-
-            if (!slug) {
+            if (!(item.link.reference?.value as Page).slug) {
                 throw new Error('Slug missing for provided page')
             }
 
-            return slug === 'index' ? `/${locale}` : `/${locale}/${slug}`
+            return (item.link.reference?.value as Page).slug === 'index'
+                ? `/${locale}`
+                : `/${locale}/${(item.link.reference?.value as Page).slug}`
         case 'custom':
             if (!item.link.url) {
                 throw new Error('URL missing for provided external page')

@@ -1,0 +1,14 @@
+{
+    "bg": {
+        "email": "Имейл",
+        "password": "Парола",
+        "submit": "Изпрати",
+        "forgot-password": "Забравена Парола?"
+    },
+    "en": {
+        "email": "Email",
+        "password": "Password",
+        "submit": "Submit",
+        "forgot-password": "Forgot Password?"
+    }
+}

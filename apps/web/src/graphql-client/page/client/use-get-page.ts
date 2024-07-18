@@ -1,8 +1,8 @@
 'use client'
 
-import { PageArguments } from '../types'
+import type { Page } from 'admin-types'
 import useGQLClient from '@requests/base-client'
-import { Page } from 'admin-types'
+import type { PageArguments } from '../types'
 import { PAGE_QUERY } from '../queries/page-query'
 
 type Props = {

@@ -1,7 +1,7 @@
-import { Page } from 'admin-types'
-import { PaginatedPageArguments } from '../types'
-import { Paginated } from '@requests/types'
+import type { Page } from 'admin-types'
+import type { Paginated } from '@requests/types'
 import { getServeverGQLClient } from '@requests/base-server'
+import type { PaginatedPageArguments } from '../types'
 import { MULTIPLE_PAGES_QUERY } from '../queries/multiple-pages-query'
 
 export async function getMultiplePages(
@@ -14,7 +14,7 @@ export async function getMultiplePages(
         variables,
         {
             'x-draft-token': variables.draft
-                ? process.env.PAYLOAD_DRAFT_TOKEN!
+                ? process.env.PAYLOAD_DRAFT_TOKEN || ''
                 : '',
         },
     )

@@ -1,4 +1,4 @@
-import type { ResolvingMetadata, Metadata } from 'next'
+import type { Metadata } from 'next'
 import { PageTemplate } from '@components'
 import { getFooter, getHeader, getMultiplePages } from '@requests'
 

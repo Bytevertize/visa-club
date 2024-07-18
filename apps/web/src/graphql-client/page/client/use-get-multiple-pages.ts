@@ -1,10 +1,10 @@
 'use client'
 
-import { PaginatedPageArguments } from '../types'
+import type { Page } from 'admin-types'
 import useGQLClient from '@requests/base-client'
-import { Page } from 'admin-types'
+import type { Paginated } from '@requests/types'
+import type { PaginatedPageArguments } from '../types'
 import { MULTIPLE_PAGES_QUERY } from '../queries/multiple-pages-query'
-import { Paginated } from '@requests/types'
 
 type Props = {
     loadOnInit?: boolean

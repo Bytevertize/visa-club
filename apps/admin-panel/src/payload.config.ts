@@ -27,6 +27,8 @@ import { FormBlock } from './blocks'
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
 import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs'
 import { Buffer } from 'buffer'
+import { Company } from './collections/company'
+import email from './email'
 dotenv.config({ path: '.env' })
 dotenv.config({ path: '.env.production' })
 
@@ -125,6 +127,7 @@ export default buildConfig({
             ]
         },
     }),
+    email,
     collections: [
         Users,
         Pages,
@@ -133,6 +136,7 @@ export default buildConfig({
         PageSectionBackground,
         SEOMedia,
         LogoMedia,
+        Company,
     ],
     globals: [HeaderGlobal, FooterGlobal],
     typescript: {

@@ -15,6 +15,7 @@ export interface Config {
         'page-section-background': PageSectionBackground
         seo: Seo
         logo: Logo
+        company: Company
         forms: Form
         'form-submissions': FormSubmission
         'payload-preferences': PayloadPreference
@@ -265,6 +266,57 @@ export interface Logo {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company".
+ */
+export interface Company {
+    id: string
+    logo: string | Logo
+    name: string
+    phone: string
+    slug?: string | null
+    content?: {
+        root: {
+            type: string
+            children: {
+                type: string
+                version: number
+                [k: string]: unknown
+            }[]
+            direction: ('ltr' | 'rtl') | null
+            format:
+                | 'left'
+                | 'start'
+                | 'center'
+                | 'right'
+                | 'end'
+                | 'justify'
+                | ''
+            indent: number
+            version: number
+        }
+        [k: string]: unknown
+    } | null
+    contactPerson?: {
+        contactPersonName?: string | null
+        contactPersonTitle?: string | null
+        phoneNumber?: string | null
+        contactEmail?: string | null
+    }
+    updatedAt: string
+    createdAt: string
+    email: string
+    resetPasswordToken?: string | null
+    resetPasswordExpiration?: string | null
+    salt?: string | null
+    hash?: string | null
+    _verified?: boolean | null
+    _verificationToken?: string | null
+    loginAttempts?: number | null
+    lockUntil?: string | null
+    password: string | null
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "forms".
  */
 export interface Form {
@@ -471,10 +523,15 @@ export interface FormSubmission {
  */
 export interface PayloadPreference {
     id: string
-    user: {
-        relationTo: 'users'
-        value: string | User
-    }
+    user:
+        | {
+              relationTo: 'users'
+              value: string | User
+          }
+        | {
+              relationTo: 'company'
+              value: string | Company
+          }
     key?: string | null
     value?:
         | {
@@ -507,19 +564,21 @@ export interface Header {
     id: string
     navItems: {
         itemsToShow: number
-        items: {
-            link: {
-                type?: ('reference' | 'custom') | null
-                newTab?: boolean | null
-                reference?: {
-                    relationTo: 'pages'
-                    value: string | Page
-                } | null
-                url?: string | null
-                label: string
-            }
-            id?: string | null
-        }[]
+        items?:
+            | {
+                  link: {
+                      type?: ('reference' | 'custom') | null
+                      newTab?: boolean | null
+                      reference?: {
+                          relationTo: 'pages'
+                          value: string | Page
+                      } | null
+                      url?: string | null
+                      label: string
+                  }
+                  id?: string | null
+              }[]
+            | null
     }
     logo: {
         image: string | Logo
