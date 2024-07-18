@@ -54,7 +54,6 @@ export const Company: CollectionConfig = {
         delete: allowOnlyAdmin,
         unlock: allowOnlyAdmin,
         readVersions: allowOnlyAdmin,
-        // TODO: Create Reading Access
         read({ req }) {
             if (req.user) return true
 
