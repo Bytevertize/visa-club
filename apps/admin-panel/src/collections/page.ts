@@ -55,7 +55,7 @@ export const Pages: CollectionConfig = {
                 // }),
             ],
         },
-        { type: 'upload', relationTo: `page-background`, name: 'image' },
+        // { type: 'upload', relationTo: `page-background`, name: 'image' },
         {
             name: 'pageSections',
             type: 'array',

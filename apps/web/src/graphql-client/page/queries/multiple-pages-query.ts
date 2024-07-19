@@ -22,11 +22,11 @@ export const MULTIPLE_PAGES_QUERY = gql`
                 id
                 title
                 slug
-                image {
-                    id
-                    alt
-                    url
-                }
+                # image {
+                #     id
+                #     alt
+                #     url
+                # }
                 pageSections {
                     ...PageSection
                 }

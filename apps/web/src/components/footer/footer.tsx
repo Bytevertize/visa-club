@@ -11,7 +11,7 @@ type FooterProps = {
 
 export function Footer({ data, locale }: FooterProps) {
     return (
-        <AppFooter isCentered>
+        <AppFooter className="bg:transperent color:white" isCentered>
             <div className="flex flex-col px-4 prose-p:mx-1">
                 {data.content.content?.root.children.map((node) =>
                     renderRichTextData(node as AllNodes, locale),
