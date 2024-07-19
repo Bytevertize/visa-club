@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Links } from './links'
 import type { HeaderProps } from './types'
 import { ChangeLang } from './change-lang'
+import { AuthLinks } from './auth-links'
 
 export function DesktopHeader({ data, locale, slug }: HeaderProps) {
     return (
@@ -24,6 +25,7 @@ export function DesktopHeader({ data, locale, slug }: HeaderProps) {
             <div className="navbar-center">
                 <ul className="menu menu-horizontal px-1">
                     <Links data={data.navItems.items} locale={locale} />
+                    <AuthLinks locale={locale} />
                 </ul>
             </div>
             <div className="navbar-end">
