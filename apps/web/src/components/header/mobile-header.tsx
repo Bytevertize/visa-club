@@ -1,4 +1,5 @@
 'use client'
+import type { PropsWithChildren } from 'react'
 import { useEffect, useRef } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
@@ -8,7 +9,11 @@ import { Links } from './links'
 import type { HeaderProps } from './types'
 import { ChangeLang } from './change-lang'
 
-export function MobileHeader({ data, locale }: Omit<HeaderProps, 'slug'>) {
+export function MobileHeader({
+    data,
+    locale,
+    children,
+}: PropsWithChildren<Omit<HeaderProps, 'slug'>>) {
     const topDrawerRef = useRef<HTMLDivElement>(null)
     const openDrawerRef = useRef<HTMLButtonElement>(null)
     const closeDrawerRef = useRef<HTMLButtonElement>(null)
@@ -77,6 +82,7 @@ export function MobileHeader({ data, locale }: Omit<HeaderProps, 'slug'>) {
                                 isMobile
                                 locale={locale}
                             />
+                            {children}
                             {data.i18n.text ? (
                                 <ChangeLang>{data.i18n.text}</ChangeLang>
                             ) : null}
