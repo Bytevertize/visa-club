@@ -5,6 +5,7 @@ export const COMPANY_FRAGMENT = gql`
         id
         slug
         content
+        name
         logo {
             id
             alt

@@ -39,12 +39,6 @@ export type PaginatedCompanyArguments = {
     page?: number
 
     /**
-     * If true, fetch the draft version of the pages. If false
-     * provided, fetch the published version.
-     */
-    draft: boolean
-
-    /**
      * The filter to apply to the page results
      */
     where?: CompanyWhere
