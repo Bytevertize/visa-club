@@ -5,16 +5,19 @@ import translation from './translations.json'
 
 type Props = {
     locale: Locale
+    isMobile: boolean
 }
 
-export function LogoutForm({ locale }: Props) {
+export function LogoutForm({ locale, isMobile }: Props) {
     const submitText = translation[locale as keyof typeof translation].submit
 
     return (
-        <form action="/api/logout-company" method="POST">
-            <button className="btn btn-ghost" type="submit">
-                {submitText}
-            </button>
+        <form
+            action="/api/logout-company"
+            className={isMobile ? 'w-full' : ''}
+            method="POST"
+        >
+            <button type="submit">{submitText}</button>
         </form>
     )
 }
