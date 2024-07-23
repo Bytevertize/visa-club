@@ -67,11 +67,11 @@ export function MobileHeader({
                             <Image
                                 alt="logo"
                                 className="mb-2"
-                                height={(data.logo.image as Logo).height || 0}
+                                height={200}
                                 src={`${
                                     process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT
                                 }${(data.logo.image as Logo).url}`}
-                                width={(data.logo.image as Logo).width || 0}
+                                width={200}
                             />
                         ) : null}
                     </div>
