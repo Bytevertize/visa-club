@@ -6,15 +6,38 @@ type Props = {
     params: {
         locale: Locale
     }
+    searchParams: {
+        page: number
+    }
 }
 
-export default async function Page({ params: { locale } }: Props) {
+export default async function Page({
+    params: { locale },
+    searchParams: { page = 1 },
+}: Props) {
     const nesh = await getMultipleCompanies({
         locale,
-        page: 1,
+        page: Number(page),
         limit: 10,
         sort: 'asc',
     })
 
-    return <PaginatedList items={nesh.Companies.docs} locale={locale} />
+    async function loadMore(nextPage: number) {
+        'use server'
+        const response = await getMultipleCompanies({
+            locale,
+            page: nextPage,
+            limit: 10,
+            sort: 'asc',
+        })
+        return response.Companies.docs
+    }
+
+    return (
+        <PaginatedList
+            items={nesh.Companies.docs}
+            loadMore={loadMore}
+            locale={locale}
+        />
+    )
 }
