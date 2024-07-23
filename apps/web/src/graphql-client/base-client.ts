@@ -28,7 +28,11 @@ export default function useGQLClient<
     const call = useCallback(
         async function call(fetchVariables?: Props<TVar>['variables']) {
             try {
-                setState((prev) => ({ ...prev, loading: true }))
+                setState((prevState) => ({
+                    ...prevState,
+                    error: null,
+                    loading: true,
+                }))
 
                 const response = await GQLClient(query, {
                     operationName: queryName,
