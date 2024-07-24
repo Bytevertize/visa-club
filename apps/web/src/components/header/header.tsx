@@ -8,7 +8,7 @@ export function Header({ data, locale, slug }: HeaderProps) {
         <>
             <DesktopHeader data={data} locale={locale} slug={slug} />
             <MobileHeader data={data} locale={locale}>
-                <AuthLinks locale={locale} />
+                <AuthLinks isMobile locale={locale} />
             </MobileHeader>
         </>
     )

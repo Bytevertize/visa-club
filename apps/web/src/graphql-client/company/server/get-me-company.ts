@@ -10,9 +10,9 @@ export async function getMeCompany(): Promise<Company | null> {
     const client = await getServerGQLClient()
     const payloadCookie = cookieStore.get('payload-token')
 
-    const {
-        meCompany: { user },
-    } = await client.request<{ meCompany: { user: Company } }>(
+    const company = await client.request<
+        { meCompany: { user: Company } } | { meCompany: null }
+    >(
         COMPANY_ME_QUERY,
         {},
         {
@@ -20,5 +20,5 @@ export async function getMeCompany(): Promise<Company | null> {
         },
     )
 
-    return user
+    return (company.meCompany || { user: null }).user
 }

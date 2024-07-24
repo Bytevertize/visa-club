@@ -26,7 +26,7 @@ export function RootLayout({
     return (
         <html data-theme="visa" lang={locale}>
             <body
-                className={`${font.className} prose prose-base max-w-none h-screen max-h-screen`}
+                className={`${font.className} prose prose-base 4k:prose-2xl 4k:prose-p:text-4xl max-w-none h-screen max-h-screen`}
                 style={{ background: 'transparent' }}
             >
                 <div className="fixed h-screen w-screen overflow-hidden z-[-1]">
