@@ -19,7 +19,7 @@ export function Content({ data, locale }: Props) {
 
                 let backgroundImage = ''
                 if (bgType === 'image') {
-                    backgroundImage = `url(${`${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}${image.url}`})`
+                    backgroundImage = `url(${`${process.env.NEXT_PUBLIC_CMS_IMAGE_HOSTNAME}${image.url}`})`
                 } else if (bgType === 'color' && color) {
                     backgroundImage = color
                 }

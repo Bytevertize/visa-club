@@ -16,7 +16,7 @@ export function RichTextImage({ node: { relationTo, value } }: Props) {
                 <Image
                     alt={value.alt || 'alt'}
                     height={(size ? size.height : value.height)!}
-                    src={`${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}${
+                    src={`${process.env.NEXT_PUBLIC_CMS_IMAGE_HOSTNAME}${
                         size ? size.url : value.url
                     }`}
                     style={{
@@ -35,7 +35,7 @@ export function RichTextImage({ node: { relationTo, value } }: Props) {
                 <Image
                     alt={value.url || 'alt'}
                     height={value.height!}
-                    src={`${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}${value.url}`}
+                    src={`${process.env.NEXT_PUBLIC_CMS_IMAGE_HOSTNAME}${value.url}`}
                     width={value.width!}
                 />
             )

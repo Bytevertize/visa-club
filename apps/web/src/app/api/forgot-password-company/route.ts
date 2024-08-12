@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
     const email = formData.get('forgotPasswordEmailInput')
 
     const cmsResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/company/forgot-password`,
+        `${process.env.CMS_BASE_ENDPOINT}/api/company/forgot-password`,
         {
             method: 'POST',
             headers: {

@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
         }
 
         const cmsResponse = await fetch(
-            `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/company/me`,
+            `${process.env.CMS_BASE_ENDPOINT}/api/company/me`,
             {
                 headers: {
                     'Content-Type': 'application/json',

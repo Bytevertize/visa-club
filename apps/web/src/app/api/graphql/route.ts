@@ -8,19 +8,22 @@ export async function POST(req: NextRequest) {
         const payloadTokenCookie = cookieStore.get('payload-token')
         const body = await req.json()
 
-        const gqlResponse = await fetch(process.env.GRAPHQL_ENDPOINT || '', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-                Cookie: `payload-token=${payloadTokenCookie?.value}`,
+        const gqlResponse = await fetch(
+            process.env.CMS_GRAPHQL_ENDPOINT || '',
+            {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Cookie: `payload-token=${payloadTokenCookie?.value}`,
+                },
+                body: JSON.stringify({
+                    query: body.query,
+                    variables: body.variables,
+                    operationName: body.operationName,
+                }),
             },
-            body: JSON.stringify({
-                query: body.query,
-                variables: body.variables,
-                operationName: body.operationName,
-            }),
-        })
+        )
 
         const response = NextResponse.json(await gqlResponse.json())
 
