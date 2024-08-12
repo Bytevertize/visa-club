@@ -13,9 +13,9 @@ type HeaderProps = {
 export function DraftHeader({ data: initialData, locale, slug }: HeaderProps) {
     const { data } = useLivePreview<HeaderType>({
         initialData,
-        serverURL: process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT || '',
+        serverURL: process.env.NEXT_PUBLIC_CMS_BASE_ENDPOINT || '',
         depth: 0,
-        apiRoute: `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/globals/header`,
+        apiRoute: `${process.env.NEXT_PUBLIC_CMS_BASE_ENDPOINT}/api/globals/header`,
     })
 
     return <Header data={data} locale={locale} slug={slug} />

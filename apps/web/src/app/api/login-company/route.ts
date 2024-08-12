@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     const email = formData.get('emailLoginField')
 
     const cmsResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/company/login`,
+        `${process.env.CMS_BASE_ENDPOINT}/api/company/login`,
         {
             method: 'POST',
             headers: {
@@ -19,9 +19,14 @@ export async function POST(request: NextRequest) {
         },
     )
 
-    const nextResponse = NextResponse.redirect(new URL('/', request.url), {
-        status: 302,
-    })
+    console.log(JSON.stringify(await cmsResponse.json(), null, 4))
+
+    const nextResponse = NextResponse.redirect(
+        new URL('/', process.env.OWN_ENDPOINT),
+        {
+            status: 302,
+        },
+    )
 
     nextResponse.headers.set(
         'Set-Cookie',

@@ -9,7 +9,7 @@ type Props = {
 }
 export async function AuthLinks({ locale, isMobile = false }: Props) {
     const company = await getMeCompany()
-
+    console.log(company)
     return company ? (
         <>
             <HeaderLink

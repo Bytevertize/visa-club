@@ -13,9 +13,9 @@ type Props = {
 export function DraftContent({ data: initialData, locale }: Props) {
     const { data } = useLivePreview<Page>({
         initialData,
-        serverURL: process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT || '',
+        serverURL: process.env.NEXT_PUBLIC_CMS_BASE_ENDPOINT || '',
         depth: 1,
-        apiRoute: `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/pages/${initialData.id}`,
+        apiRoute: `${process.env.NEXT_PUBLIC_CMS_BASE_ENDPOINT}/api/pages/${initialData.id}`,
     })
 
     return <Content data={data} locale={locale} />

@@ -12,9 +12,9 @@ type FooterProps = {
 export function DraftFooter({ data: initialData, locale }: FooterProps) {
     const { data } = useLivePreview<FooterType>({
         initialData,
-        serverURL: process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT || '',
+        serverURL: process.env.NEXT_PUBLIC_CMS_BASE_ENDPOINT || '',
         depth: 1,
-        apiRoute: `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/globals/footer`,
+        apiRoute: `${process.env.NEXT_PUBLIC_CMS_BASE_ENDPOINT}/api/globals/footer`,
     })
 
     return <Footer data={data} locale={locale} />

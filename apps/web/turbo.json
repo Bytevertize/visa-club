@@ -9,12 +9,13 @@
                 "@repo/ui#build:styles"
             ],
             "env": [
+                "OWN_ENDPOINT",
+                "CMS_BASE_ENDPOINT",
                 "PAYLOAD_HOSTNAME",
-                "GRAPHQL_ENDPOINT",
+                "CMS_GRAPHQL_ENDPOINT",
                 "ANALYZE",
-                "NEXT_PUBLIC_LANG_COOKIE",
                 "PAYLOAD_DRAFT_TOKEN",
-                "NEXT_PUBLIC_PAYLOAD_ENDPOINT"
+                "CMS_GRAPHQL_ENDPOINT"
             ]
         },
         "dev": {
@@ -24,11 +25,12 @@
                 "^build"
             ],
             "env": [
+                "OWN_ENDPOINT",
+                "CMS_BASE_ENDPOINT",
                 "PAYLOAD_HOSTNAME",
-                "GRAPHQL_ENDPOINT",
-                "NEXT_PUBLIC_LANG_COOKIE",
+                "CMS_GRAPHQL_ENDPOINT",
                 "PAYLOAD_DRAFT_TOKEN",
-                "NEXT_PUBLIC_PAYLOAD_ENDPOINT"
+                "CMS_GRAPHQL_ENDPOINT"
             ],
             "persistent": true
         },
@@ -37,25 +39,12 @@
             "dependsOn": [
                 "build"
             ],
-            "env": [
-                "GRAPHQL_ENDPOINT",
-                "NEXT_PUBLIC_LANG_COOKIE",
-                "PAYLOAD_DRAFT_TOKEN",
-                "NEXT_PUBLIC_PAYLOAD_ENDPOINT",
-                "PAYLOAD_HOSTNAME"
-            ],
             "persistent": true
         },
         "start:static": {
             "cache": false,
             "dependsOn": [
                 "build"
-            ],
-            "env": [
-                "GRAPHQL_ENDPOINT",
-                "NEXT_PUBLIC_LANG_COOKIE",
-                "NEXT_PUBLIC_PAYLOAD_ENDPOINT",
-                "PAYLOAD_HOSTNAME"
             ],
             "persistent": true
         }

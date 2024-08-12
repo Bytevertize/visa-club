@@ -12,6 +12,8 @@ services:
             - 3000:3000
         depends_on:
             - admin_panel
+        environment:
+            - CMS_BASE_ENDPOINT=http://admin_panel:4000
 
     admin_panel:
         networks:

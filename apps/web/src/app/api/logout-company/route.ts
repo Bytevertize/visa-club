@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request: NextRequest) {
     const cookieStore = cookies()
     const cmsResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/company/logout`,
+        `${process.env.CMS_BASE_ENDPOINT}/api/company/logout`,
         {
             method: 'POST',
             headers: {
