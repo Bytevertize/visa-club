@@ -2,8 +2,10 @@ import { i18nRouter } from 'next-i18n-router'
 import { NextResponse, type NextRequest } from 'next/server'
 import { i18nConfig } from '@i18n'
 
+const AUTH_PAGES = ['companies', 'events']
+
 export async function middleware(request: NextRequest) {
-    if (request.nextUrl.pathname.includes('companies')) {
+    if (AUTH_PAGES.some((page) => request.nextUrl.pathname.includes(page))) {
         const cmsCookieValue = request.cookies.get('payload-token')?.value
         const cmsCookieName = request.cookies.get('payload-token')?.name
 
