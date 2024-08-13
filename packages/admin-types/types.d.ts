@@ -16,6 +16,7 @@ export interface Config {
         seo: Seo
         logo: Logo
         company: Company
+        event: Event
         forms: Form
         'form-submissions': FormSubmission
         'payload-preferences': PayloadPreference
@@ -313,6 +314,39 @@ export interface Company {
     loginAttempts?: number | null
     lockUntil?: string | null
     password: string | null
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event".
+ */
+export interface Event {
+    id: string
+    name: string
+    slug?: string | null
+    content?: {
+        root: {
+            type: string
+            children: {
+                type: string
+                version: number
+                [k: string]: unknown
+            }[]
+            direction: ('ltr' | 'rtl') | null
+            format:
+                | 'left'
+                | 'start'
+                | 'center'
+                | 'right'
+                | 'end'
+                | 'justify'
+                | ''
+            indent: number
+            version: number
+        }
+        [k: string]: unknown
+    } | null
+    updatedAt: string
+    createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -10,11 +10,13 @@ import type { Item } from './types'
 type Props<T extends Item> = {
     items: Item[]
     locale: Locale
+    hrefBase: string
     loadMore: (page: number) => Promise<T[]>
 }
 export function PaginatedList<T extends Item>({
     items: propItems,
     locale,
+    hrefBase,
     loadMore,
 }: Props<T>) {
     const [items, setItems] = useState(propItems)
@@ -40,7 +42,12 @@ export function PaginatedList<T extends Item>({
         <div className="w-[80%] mx-auto mb-10 max-h-full">
             <ul className="p-0 max-h-full">
                 {items.map((item) => (
-                    <ListItem item={item} key={item.id} locale={locale} />
+                    <ListItem
+                        hrefBase={hrefBase}
+                        item={item}
+                        key={item.id}
+                        locale={locale}
+                    />
                 ))}
 
                 {loadMoreItems ? (
