@@ -6,10 +6,10 @@ export const MULTIPLE_EVENTS_QUERY = gql`
         $limit: Int!
         $page: Int
         $sort: String
-        $where: Company_where
+        $where: Event_where
         $locale: LocaleInputType!
     ) {
-        Companies(
+        Events(
             locale: $locale
             limit: $limit
             page: $page

@@ -1,3 +1,4 @@
+import type { Company } from 'admin-types'
 import { PaginatedList } from '@components/paginated-list'
 import type { Locale } from '@i18n/types'
 import { getMultipleCompanies } from '@requests/company'
@@ -15,7 +16,7 @@ export default async function Page({
     params: { locale },
     searchParams: { page = 1 },
 }: Props) {
-    const nesh = await getMultipleCompanies({
+    const companies = await getMultipleCompanies({
         locale,
         page: Number(page),
         limit: 10,
@@ -35,7 +36,8 @@ export default async function Page({
 
     return (
         <PaginatedList
-            items={nesh.Companies.docs}
+            hrefBase="companies"
+            items={companies.Companies.docs}
             loadMore={loadMore}
             locale={locale}
         />
