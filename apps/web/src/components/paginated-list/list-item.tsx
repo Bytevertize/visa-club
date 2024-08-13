@@ -1,11 +1,11 @@
-import type { Company } from 'admin-types'
 import Link from 'next/link'
 import { RichTextRenderer } from '@components/rich-text'
 import type { RootNode } from '@components/rich-text/types'
 import type { Locale } from '@i18n/types'
+import type { Item } from './types'
 
 type Props = {
-    item: Company
+    item: Item
     locale: Locale
 }
 
