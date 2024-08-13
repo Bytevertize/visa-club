@@ -9,7 +9,7 @@ type Props = {
 }
 export async function AuthLinks({ locale, isMobile = false }: Props) {
     const company = await getMeCompany()
-    console.log(company)
+
     return company ? (
         <>
             <HeaderLink
@@ -19,12 +19,12 @@ export async function AuthLinks({ locale, isMobile = false }: Props) {
                 target="_self"
             />
             {/* TODO: Add on seperate branch */}
-            {/* <HeaderLink
+            <HeaderLink
                 href="/events"
                 isMobile={isMobile}
                 label={locale === 'bg' ? 'Събития' : 'Events'}
                 target="_self"
-            /> */}
+            />
             <li
                 className={`p-0  ${
                     isMobile

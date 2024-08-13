@@ -19,8 +19,6 @@ export async function POST(request: NextRequest) {
         },
     )
 
-    console.log(JSON.stringify(await cmsResponse.json(), null, 4))
-
     const nextResponse = NextResponse.redirect(
         new URL('/', process.env.OWN_ENDPOINT),
         {

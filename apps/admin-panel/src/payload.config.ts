@@ -29,6 +29,7 @@ import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs'
 import { Buffer } from 'buffer'
 import { Company } from './collections/company'
 import email from './email'
+import { Event } from './collections/events'
 dotenv.config({ path: '.env' })
 dotenv.config({ path: '.env.production' })
 
@@ -137,6 +138,7 @@ export default buildConfig({
         SEOMedia,
         LogoMedia,
         Company,
+        Event,
     ],
     globals: [HeaderGlobal, FooterGlobal],
     typescript: {

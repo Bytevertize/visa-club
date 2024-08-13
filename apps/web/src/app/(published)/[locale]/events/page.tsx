@@ -1,7 +1,6 @@
-import type { Company } from 'admin-types'
 import { PaginatedList } from '@components/paginated-list'
 import type { Locale } from '@i18n/types'
-import { getMultipleCompanies } from '@requests/company'
+import { getMultipleEvents } from '@requests/event'
 
 type Props = {
     params: {
@@ -16,7 +15,7 @@ export default async function Page({
     params: { locale },
     searchParams: { page = 1 },
 }: Props) {
-    const companies = await getMultipleCompanies({
+    const events = await getMultipleEvents({
         locale,
         page: Number(page),
         limit: 10,
@@ -25,19 +24,19 @@ export default async function Page({
 
     async function loadMore(nextPage: number) {
         'use server'
-        const response = await getMultipleCompanies({
+        const response = await getMultipleEvents({
             locale,
             page: nextPage,
             limit: 10,
             sort: 'asc',
         })
-        return response.Companies.docs
+        return response.Events.docs
     }
 
     return (
         <PaginatedList
-            hrefBase="companies"
-            items={companies.Companies.docs}
+            hrefBase="events"
+            items={events.Events.docs}
             loadMore={loadMore}
             locale={locale}
         />
