@@ -8,6 +8,7 @@
 
 export interface Config {
     collections: {
+        cause: Cause
         users: User
         pages: Page
         'page-background': PageBackground
@@ -26,6 +27,39 @@ export interface Config {
         header: Header
         footer: Footer
     }
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cause".
+ */
+export interface Cause {
+    id: string
+    name: string
+    slug?: string | null
+    content?: {
+        root: {
+            type: string
+            children: {
+                type: string
+                version: number
+                [k: string]: unknown
+            }[]
+            direction: ('ltr' | 'rtl') | null
+            format:
+                | 'left'
+                | 'start'
+                | 'center'
+                | 'right'
+                | 'end'
+                | 'justify'
+                | ''
+            indent: number
+            version: number
+        }
+        [k: string]: unknown
+    } | null
+    updatedAt: string
+    createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
