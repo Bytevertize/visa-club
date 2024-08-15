@@ -25,7 +25,7 @@ const editor = lexicalEditor({
     ],
 })
 
-export const Event: CollectionConfig = {
+export const Cause: CollectionConfig = {
     access: {
         create: allowOnlyAdmin,
         update: allowOnlyAdmin,
@@ -59,7 +59,7 @@ export const Event: CollectionConfig = {
             },
         ],
     },
-    slug: 'event',
+    slug: 'cause',
     fields: [
         {
             type: 'row',

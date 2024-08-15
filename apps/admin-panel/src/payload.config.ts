@@ -17,6 +17,9 @@ import {
     PageSectionBackground,
     LogoMedia,
     SEOMedia,
+    Company,
+    Event,
+    Cause,
 } from './collections'
 import { LayoutFeature, DividerFeature } from './rich-text'
 import { RichTextTheme } from './rich-text/theme'
@@ -27,9 +30,7 @@ import { FormBlock } from './blocks'
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
 import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs'
 import { Buffer } from 'buffer'
-import { Company } from './collections/company'
 import email from './email'
-import { Event } from './collections/events'
 dotenv.config({ path: '.env' })
 dotenv.config({ path: '.env.production' })
 
@@ -130,6 +131,7 @@ export default buildConfig({
     }),
     email,
     collections: [
+        Cause,
         Users,
         Pages,
         PageBackground,
