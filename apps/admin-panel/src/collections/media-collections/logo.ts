@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload/types'
 import { allowAll, allowOnlyAdmin } from '../../access'
 
 export const LogoMedia: CollectionConfig = {
+    admin: {
+        group: 'Media',
+    },
     slug: 'logo',
     access: {
         read: allowAll,

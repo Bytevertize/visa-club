@@ -3432,10 +3432,10 @@
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-2.3.2.tgz#5785030fe10f0a546fffafe5510ed65735d01974"
   integrity sha512-wlYxY36CRDQQBSgpdvfNlovqw7qYp0jo5ORbkWZl7eeAliUl58ng7SEapRiihYWfqfPQ+eQOs2yL7CNz0GAvLg==
 
-"@payloadcms/richtext-lexical@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.8.0.tgz#1407a71d5f672a0eeb2167ccf29752aae59355ec"
-  integrity sha512-9Vc6ynQOqpicYgKXqQdaoo+YSvkZyGdEe77cuAay8HceEX9AKQuh2+qhul4P1XhsZHuD3X7mWu37CMG1qEQYog==
+"@payloadcms/richtext-lexical@^0.11.3":
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.11.3.tgz#0897023a6465f7281e77cce4990c8f073da6a0d4"
+  integrity sha512-Y1FXtPQKO+6Prkh7PimptERhM02zWgrIcpFEsRHSyldebK3fv51YnuuaBhDtAqtifAXYAxgrSg5dliEZqmaCjw==
   dependencies:
     "@faceless-ui/modal" "2.0.1"
     "@lexical/headless" "0.13.1"
@@ -3454,8 +3454,6 @@
     json-schema "^0.4.0"
     lexical "0.13.1"
     lodash "4.17.21"
-    react "18.2.0"
-    react-dom "18.2.0"
     react-error-boundary "4.0.12"
     react-i18next "11.18.6"
     ts-essentials "7.0.3"

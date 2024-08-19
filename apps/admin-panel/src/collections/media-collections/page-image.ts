@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload/types'
 import { allowAll, allowOnlyAdmin } from '../../access'
 
 export const PageImage: CollectionConfig = {
+    admin: {
+        group: 'Media',
+    },
     slug: 'page-image',
     access: {
         read: allowAll,

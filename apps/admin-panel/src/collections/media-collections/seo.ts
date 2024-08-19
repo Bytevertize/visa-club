@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload/types'
 import { allowAll, allowOnlyAdmin } from '../../access'
 
 export const SEOMedia: CollectionConfig = {
+    admin: {
+        group: 'Media',
+    },
     slug: 'seo',
     access: {
         read: allowAll,

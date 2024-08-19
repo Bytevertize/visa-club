@@ -40,6 +40,7 @@ export const Cause: CollectionConfig = {
     },
     admin: {
         useAsTitle: 'name',
+        group: 'Data Page',
         disableDuplicate: true,
         listSearchableFields: ['name'],
     },

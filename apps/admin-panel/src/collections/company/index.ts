@@ -61,6 +61,7 @@ export const Company: CollectionConfig = {
         },
     },
     admin: {
+        group: 'Data Page',
         useAsTitle: 'name',
         disableDuplicate: true,
         listSearchableFields: ['name', 'email'],

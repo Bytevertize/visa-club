@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload/types'
 import { allowAll, allowOnlyAdmin } from '../../access'
 
 export const PageSectionBackground: CollectionConfig = {
+    admin: {
+        group: 'Media',
+    },
     slug: 'page-section-background',
     access: {
         read: allowAll,
