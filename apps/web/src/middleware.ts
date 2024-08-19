@@ -2,7 +2,7 @@ import { i18nRouter } from 'next-i18n-router'
 import { NextResponse, type NextRequest } from 'next/server'
 import { i18nConfig } from '@i18n'
 
-const AUTH_PAGES = ['companies', 'events']
+const AUTH_PAGES = ['companies', 'events', 'causes']
 
 export async function middleware(request: NextRequest) {
     if (AUTH_PAGES.some((page) => request.nextUrl.pathname.includes(page))) {

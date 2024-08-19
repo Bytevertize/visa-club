@@ -1,25 +1,25 @@
 import { RichTextRenderer } from '@components/rich-text'
 import type { Locale } from '@i18n/types'
-import { getMultipleEvents } from '@requests/event'
 import type { RootNode } from '@components/rich-text/types'
+import { getMultipleCauses } from '@requests/cause'
 
 type Props = {
     params: {
         locale: Locale
-        eventName: string
+        causeName: string
     }
 }
 
-export default async function Page({ params: { eventName, locale } }: Props) {
+export default async function Page({ params: { causeName, locale } }: Props) {
     const {
-        Events: {
+        Causes: {
             docs: [event],
         },
-    } = await getMultipleEvents({
+    } = await getMultipleCauses({
         locale,
         page: 1,
         limit: 1,
-        where: { slug: { equals: eventName } },
+        where: { slug: { equals: causeName } },
     })
 
     return (

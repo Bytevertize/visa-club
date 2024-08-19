@@ -5,5 +5,6 @@ export const i18nConfig: Config = {
     prefixDefault: true,
     defaultLocale: 'bg',
     serverSetCookie: 'never',
+    localeDetector: false,
     localeCookie: process.env.NEXT_PUBLIC_LANG_COOKIE || 'NEXT_LOCALE',
 }

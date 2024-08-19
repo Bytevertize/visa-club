@@ -1,4 +1,3 @@
-import type { Company } from 'admin-types'
 import { PaginatedList } from '@components/paginated-list'
 import type { Locale } from '@i18n/types'
 import { getMultipleCompanies } from '@requests/company'
