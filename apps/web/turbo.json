@@ -10,7 +10,7 @@
             ],
             "env": [
                 "NEXT_PUBLIC_CMS_BASE_ENDPOINT",
-                "NEXT_PUBLIC_CMS_IMAGE_HOSTNAME",
+                "PUBLIC_CMS_IMAGE_HOSTNAME",
                 "NEXT_PUBLIC_LANG_COOKIE",
                 "OWN_ENDPOINT",
                 "CMS_BASE_ENDPOINT",
@@ -29,7 +29,7 @@
             ],
             "env": [
                 "NEXT_PUBLIC_CMS_BASE_ENDPOINT",
-                "NEXT_PUBLIC_CMS_IMAGE_HOSTNAME",
+                "PUBLIC_CMS_IMAGE_HOSTNAME",
                 "NEXT_PUBLIC_LANG_COOKIE",
                 "OWN_ENDPOINT",
                 "CMS_BASE_ENDPOINT",

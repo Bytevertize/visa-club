@@ -68,9 +68,7 @@ export function MobileHeader({
                                 alt="logo"
                                 className="mb-2"
                                 height={200}
-                                src={`${
-                                    process.env.NEXT_PUBLIC_CMS_IMAGE_HOSTNAME
-                                }${(data.logo.image as Logo).url}`}
+                                src={`${(data.logo.image as Logo).url}`}
                                 width={200}
                             />
                         ) : null}

@@ -33,7 +33,7 @@ export default async function Page({ params: { companyName, locale } }: Props) {
                     alt={logo.alt || 'alt'}
                     className="m-0 relative lg:absolute"
                     height={100}
-                    src={`${process.env.NEXT_PUBLIC_CMS_IMAGE_HOSTNAME}${logo.url}`}
+                    src={logo.url!}
                     width={200}
                 />
                 <h1 className="m-0 mx-auto">{company.name}</h1>

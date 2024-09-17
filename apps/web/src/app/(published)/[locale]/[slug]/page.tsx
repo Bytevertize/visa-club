@@ -26,7 +26,6 @@ export async function generateMetadata({
             slug: { equals: slug },
         },
     })
-
     return {
         title: pageData.meta?.title,
         description: pageData.meta?.description,
@@ -60,6 +59,7 @@ export async function generateStaticParams(args: {
         draft: false,
         locale: args.params.locale,
     })
+
     return docs.reduce<{ slug: string }[]>((acc, { slug }) => {
         if (slug && slug !== 'index') {
             acc.push({ slug })
