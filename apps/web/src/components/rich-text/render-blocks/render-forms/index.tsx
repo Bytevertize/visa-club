@@ -1,6 +1,8 @@
 'use client'
 import { TextArea } from '@repo/ui'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { useCallback } from 'react'
 import type { FormBlock as FormBlockType } from './types'
 
 type Props = {
@@ -9,16 +11,55 @@ type Props = {
 
 export function FormBlock({ block: { form, id } }: Props) {
     // const submitURL = `${process.env.NEXT_PUBLIC_PAYLOAD_ENDPOINT}/api/form-submissions`
+    const { register, handleSubmit, clearErrors, setError } = useForm()
+    const router = useRouter()
 
-    const { register, handleSubmit } = useForm()
-    const onSubmit = (data: any) => {
-        // eslint-disable-next-line no-console -- testing
-        console.log(data)
+    async function onSubmit(data: Record<string, any>) {
+        clearErrors()
+
+        const submissionData = Object.entries(data).map(([name, value]) => ({
+            field: name,
+            value,
+        }))
+
+        try {
+            const req = await fetch('/api/form-submissions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    form: form.id,
+                    submissionData,
+                }),
+            })
+
+            const res = await req.json()
+
+            if (req.status >= 400) {
+                setError('root.serverError', {
+                    type: res.status,
+                    message:
+                        res.errors?.[0]?.message || 'Internal Server Error',
+                })
+
+                return
+            }
+
+            if (form.confirmationType === 'redirect' && form.redirect.url) {
+                router.push(form.redirect.url)
+            }
+        } catch (err) {
+            console.warn(err)
+            setError('root.error', {
+                message: 'Something went wrong.',
+            })
+        }
     }
-
     return (
         <form
             className="flex flex-wrap items-center gap-y-4"
+            id={id}
             onSubmit={() => {
                 handleSubmit(onSubmit)
             }}

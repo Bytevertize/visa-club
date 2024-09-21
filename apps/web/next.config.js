@@ -8,6 +8,10 @@ const config = {
     async rewrites() {
         return [
             {
+                source: '/api/form-submissions',
+                destination: `${process.env.PUBLIC_CMS_IMAGE_HOSTNAME}/api/form-submissions`,
+            },
+            {
                 source: '/media/:path*',
                 destination: `${process.env.PUBLIC_CMS_IMAGE_HOSTNAME}/media/:path*`,
             },
