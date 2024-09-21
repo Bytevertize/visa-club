@@ -6,6 +6,16 @@ if (process.env.NODE_ENV === 'production') {
     email = {
         fromName: 'VISA Club',
         fromAddress: 'info@visa-club.com',
+        transportOptions: {
+            service: 'Gmail',
+            host: 'smpt.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_PASS,
+            },
+        },
     }
 } else {
     email = {

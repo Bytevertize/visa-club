@@ -6,6 +6,8 @@
     "tasks": {
         "build": {
             "env": [
+                "GMAIL_USER",
+                "GMAIL_PASS",
                 "NODE_ENV",
                 "PAYLOAD_PUBLIC_BUCKET_ACCESS",
                 "MEDIA_URL",
@@ -24,6 +26,8 @@
         "dev": {
             "cache": false,
             "env": [
+                "GMAIL_USER",
+                "GMAIL_PASS",
                 "PAYLOAD_PUBLIC_BUCKET_ACCESS",
                 "MEDIA_URL",
                 "PAYLOAD_SECRET",

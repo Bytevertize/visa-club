@@ -48,7 +48,7 @@ function createGcsAdapter() {
     })()
 
     return gcsAdapter({
-        bucket: 'test-admin-media-bucket',
+        bucket: 'test_admin_media_bucket',
         options: {
             credentials,
         },
