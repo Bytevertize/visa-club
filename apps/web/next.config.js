@@ -5,6 +5,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const config = {
+    async rewrites() {
+        return [
+            {
+                source: '/media/:path*',
+                destination: `${process.env.PUBLIC_CMS_IMAGE_HOSTNAME}/media/:path*`,
+            },
+        ]
+    },
     eslint: {
         ignoreDuringBuilds: true,
     },
