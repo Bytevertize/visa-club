@@ -43,7 +43,7 @@ yarn-error.log*
 # ui
 dist/
 # JPEG
-*.jpg
+# *.jpg
 *.jpeg
 *.jpe
 *.jif
